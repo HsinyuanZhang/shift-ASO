@@ -141,19 +141,17 @@ def _pool_stream(factory, stop, cfg, h, sets):
         if len(z):parts.append(z)
     return _sorted_pool(np.concatenate(parts) if parts else np.empty(0,k.descriptor_dtype(sets[0].shape[1]))),{'raw_candidates':raw_count,'eligible_union':kept_count}
 
-def _events(pool,h,sets,neighbor=True):
+def _events(pool,h,sets,scale,neighbor=True):
     from . import _kernels as k
-    ni,nc,_,_,near=sets;scale=np.ones(len(h)) # overwritten from caller below
+    ni,nc,_,_,near=sets
     if neighbor:
-        scale=_EVENT_SCALE
         strong,weak=k.masks(pool,h,scale,ni,nc,.75,2,2.,0,2.,2.,3.,1.,0)
     else:
-        scale=_EVENT_SCALE; z=pool; strong=(z['ptp']>=2*scale[z['ch']])&(z['tv']<=3*z['ptp']+scale[z['ch']])&(z['e']>=h[z['ch']]);weak=np.zeros(len(pool),bool)
+        z=pool; strong=(z['ptp']>=2*scale[z['ch']])&(z['tv']<=3*z['ptp']+scale[z['ch']])&(z['e']>=h[z['ch']]);weak=np.zeros(len(pool),bool)
     ix=np.flatnonzero(strong|weak); comp=pool[ix];sk,wk=k.nms_sorted(comp,strong[ix],weak[ix],near,6)
     return k.events_from(comp,sk,wk,dict(b=6,a=10,right=10,coh=6),dict(nms=6)),dict(eligible=int(len(ix)),strong=int(sk.sum()),weak=int(wk.sum()))
 
 def run_full(data_dir, output):
-    global _EVENT_SCALE
     paths=dataset_paths(data_dir);out=Path(output);out.mkdir(parents=True,exist_ok=False);header=zip_text(paths['zip'],'sim.imec0.ap.ch');active,g=geometry(zip_text(paths['zip'],'sim.imec0.ap.meta'))
     class Factory:
         def chunks(self,stop): return stream_cbin(paths['zip'],header,active,stop)
@@ -162,12 +160,19 @@ def run_full(data_dir, output):
     full=4524.30029296875
     from . import _kernels as k
     cfg=k.ranges_from_cal(cal.min(0),cal.max(0),active,full,'bank8_power2',1.25);qcal,_,_=k.encode_range(cal,cfg['delta'],cfg['offset_codes'],cfg['initial']);ecal,_,_=k.feature_range(qcal,cfg['offset_codes'],.875,cfg['initial'].copy(),np.zeros(len(active)));h,stats=_threshold(ecal);del qcal,ecal
-    sets=canonical_geometry_sets(g);_EVENT_SCALE=cfg['delta']/(full/31.);pool,diag=_pool_stream(factory,STOP,cfg,h,sets)
+    sets=canonical_geometry_sets(g);scale=cfg['delta']/(full/31.);pool,diag=_pool_stream(factory,STOP,cfg,h,sets)
     times,channels=public_labels(paths['zip'],STOP) if paths['labels'] is None else load_labels(paths['labels'],active,g)
-    on,ond=_events(pool,h,sets,True);off,offd=_events(pool,h,sets,False);onm=canonical_score(on,times,channels,g,DEV,STOP);offm=canonical_score(off,times,channels,g,DEV,STOP)
+    on,ond=_events(pool,h,sets,scale,True);off,offd=_events(pool,h,sets,scale,False);onm=canonical_score(on,times,channels,g,DEV,STOP);offm=canonical_score(off,times,channels,g,DEV,STOP)
     on=on[(on['sample_index']>=DEV)&(on['sample_index']+60<STOP)];off=off[(off['sample_index']>=DEV)&(off['sample_index']+60<STOP)]
+    del pool
     np.savez_compressed(out/'lc6_bank8_neighbor_events.npz',events=on);np.savez_compressed(out/'lc6_bank8_no_neighbor_events.npz',events=off);np.savez_compressed(out/'calibration.npz',H=h,med=stats['med'],mad=stats['mad'],delta=cfg['delta'])
-    result={'status':'COMPLETE','protocol':{'CAL':[0,10],'DEV':[10,20],'TEST':[20,300],'guard':60,'time_tolerance':30,'spatial_um':40},'frozen_config':FROZEN,'input':{'zip_sha256':'not_computed; public Figshare file id 44729857','full_scale':full,'channels':len(active)},'pool':diag,'neighbor':{**onm,**ond,'event_sha256':hashlib.sha256((out/'lc6_bank8_neighbor_events.npz').read_bytes()).hexdigest()},'no_neighbor':{**offm,**offd,'event_sha256':hashlib.sha256((out/'lc6_bank8_no_neighbor_events.npz').read_bytes()).hexdigest()}}
+    from ._baselines import run_baselines
+    from ._full_aso import run_full_aso
+    base=run_baselines(factory,cal,g,full,STOP);full_aso=run_full_aso(factory,cal,g,full,STOP)
+    comparisons={'LC6_bank8_shiftASO':onm,'LC6_bank8_shiftASO_no_neighbor':offm}
+    for name,events in {**base['events'],**full_aso['events']}.items():
+        metric=canonical_score(events,times,channels,g,DEV,STOP); comparisons[name]=metric;np.savez_compressed(out/(name+'_events.npz'),events=events)
+    result={'status':'COMPLETE','protocol':{'CAL':[0,10],'DEV':[10,20],'TEST':[20,300],'guard':60,'time_tolerance':30,'spatial_um':40},'frozen_config':FROZEN,'input':{'zip_sha256':'not_computed; public Figshare file id 44729857','full_scale':full,'channels':len(active)},'pool':diag,'neighbor':{**onm,**ond,'event_sha256':hashlib.sha256((out/'lc6_bank8_neighbor_events.npz').read_bytes()).hexdigest()},'no_neighbor':{**offm,**offd,'event_sha256':hashlib.sha256((out/'lc6_bank8_no_neighbor_events.npz').read_bytes()).hexdigest()},'comparisons':comparisons,'baseline_parameters':base['parameters'],'fullprecision_aso_protocol':full_aso['protocol']}
     (out/'summary.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 

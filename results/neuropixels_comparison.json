@@ -1,5 +1,5 @@
 {
-  "status": "canonical_fixed_replays",
+  "status": "canonical_fixed_replays_all_eight_methods",
   "dataset": {
     "figshare_file_id": 44729857,
     "filename": "sim_no_drift.zip"
@@ -121,6 +121,40 @@
       "recall": 0.5780022805990536,
       "F1": 0.7041986522783393,
       "FP_per_s": 446.9,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "fullprecision_exactASO_neighbor",
+      "input_resolution": "full precision",
+      "neighbor": true,
+      "TP": 1416927,
+      "FP": 222021,
+      "FN": 550977,
+      "detections": 1638948,
+      "A": 0.6470207883831638,
+      "precision": 0.8645344452661097,
+      "recall": 0.7200183545538806,
+      "F1": 0.785686243849207,
+      "FP_per_s": 792.9321428571428,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "fullprecision_exactASO_no_neighbor",
+      "input_resolution": "full precision",
+      "neighbor": false,
+      "TP": 1444511,
+      "FP": 278457,
+      "FN": 523393,
+      "detections": 1722968,
+      "A": 0.6430449068515701,
+      "precision": 0.8383852747120086,
+      "recall": 0.734035298469844,
+      "F1": 0.7827478167760897,
+      "FP_per_s": 994.4892857142858,
       "guard_samples": 60,
       "time_tolerance_samples": 30,
       "spatial_radius_um": 40

@@ -30,6 +30,13 @@ are frozen in this release.
 | Quiroga | 0--6 | 6.002--18 | 18.002--59.998 |
 | Neuropixels | 0--10 | 10--20 | 20--300 |
 
+Accuracy is $A=TP/(TP+FP+FN)$. Quiroga reports the mean across 16 recordings;
+its lowest-record result is in `results/quiroga/expected_worst_record_summary.csv`.
+Neuropixels pools events across its evaluation interval.
+
+The Neuropixels command runs eight frozen methods: Shift-ASO on/off, SI raw/LC6,
+NEO, NEO-EMA, and full-resolution ASO on/off.
+
 See [docs/data.md](docs/data.md) for public data sources and download metadata.
 Comparison files are `results/quiroga/expected_method_summary.csv` and
 `results/neuropixels_comparison.csv`.

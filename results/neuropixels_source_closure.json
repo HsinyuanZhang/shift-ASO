@@ -2,5 +2,7 @@
   "status": "canonical_fixed_replays",
   "public_dataset_file_id": 44729857,
   "reference_map_sha256": "f7823bf5c54c77efd03bccd27ed090680fd0018b31836ba3170027319046c7ac",
-  "shift_event_identity_pass": true
+  "shift_event_identity_pass": true,
+  "fullprecision_aso_actual_replay_pass": true,
+  "methods": 8
 }

@@ -24,4 +24,5 @@ python scripts/download_data.py --output downloads
 Place the ZIP in the Neuropixels data directory. It must contain
 `sim.imec0.ap.cbin`, `.ch`, `.meta`, and `sim.imec0.ap_params.npz`. The package
 reads spike times and unit IDs from the parameters. Its scoring channels are
-frozen estimates in the repository configuration.
+frozen estimates in the repository configuration, derived from 30--60 s labeled
+waveforms solely for scoring and not detector calibration.
