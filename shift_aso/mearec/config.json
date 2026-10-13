@@ -1,0 +1,11 @@
+{
+  "dataset": {"sample_rate_hz": 20000, "channels": 256, "units": 64, "array": "16x16", "pitch_um": 36},
+  "splits_s": {"cal": [0, 6], "dev": [6, 20], "test": [20, 300]},
+  "frontend": {"full_scale_uV": 688.6685485839844, "bits": 6, "jump_limit": 8, "code_range": [-31, 31], "rounding": "truncation_toward_zero"},
+  "conditions": ["base", "independent_gaussian_10uVrms", "common_mode_gaussian_10uVrms"],
+  "methods": {
+    "SI10_MAD": {"quantizer_bits": 10, "threshold": "floor(4.5*MAD(q_CAL)/0.6744897501960817)", "spatial_radius_um": 54, "time_tolerance_ms": 1},
+    "NEO10_EMA": {"base": {"rho": [3, 4], "coefficient": 8}, "independent_gaussian_10uVrms": {"rho": [1, 2], "coefficient": 10}, "common_mode_gaussian_10uVrms": {"rho": [1, 2], "coefficient": 10}},
+    "LC6_Shift_ASO": {"base": {"rho": 0.875, "threshold_family": "mad", "K": 0, "window": [16, 10, 10, 10, 6, 10], "alpha": 0.5, "pstrong": 2, "phase": "negative_peak", "prominence_floor": 2, "weak_support": "integral_one"}, "independent_gaussian_10uVrms": {"rho": 0.95, "threshold_family": "mad", "K": 7.5, "window": [12, 8, 8, 8, 4, 8], "alpha": 0.5, "pstrong": 3, "phase": "negative_peak", "prominence_floor": 2, "weak_support": "integral_two"}, "common_mode_gaussian_10uVrms": {"rho": 0.875, "threshold_family": "mad", "K": 2.4, "window": [12, 8, 8, 8, 8, 8], "alpha": 0.3, "pstrong": 3, "phase": "negative_peak", "prominence_floor": 2, "weak_support": "integral_one"}}
+  }
+}

@@ -1,18 +1,17 @@
-"""Standalone frozen LC6 bank-range Shift-ASO replay for KS4 sim_no_drift."""
+"""Frozen public Neuropixels SI10, NEO10, and LC6 Shift-ASO replay."""
 from __future__ import annotations
 import hashlib, json, re, zipfile, zlib
 from pathlib import Path
 import numpy as np
 
-FS=30000; CAL=10*FS; DEV=20*FS; STOP=300*FS; GUARD=60; RADIUS_UM=40.0
-FROZEN={"branch":"LC6_bank8_power2_shiftASO","rho":0.875,"K_mad":12.9,"bank_size":8,"range_margin":1.25,"J":8,"codes":31,"window_before":6,"window_after":10,"peak_left":12,"peak_right":10,"coherence_half_window":6,"weak_alpha":0.75,"weak_neighbor_count":2,"weak_contrast":2.0,"boundary_beta":2.0,"pmin":2.0,"tv_kappa":3.0,"prominence_floor":1.0,"nms_samples":6,"ptp_rescue":False}
+FS=30000; GUARD=60; RADIUS_UM=40.0
+REFERENCE_FULL_SCALE=4524.30029296875
 EVENT_DTYPE=np.dtype([("sample_index","<i8"),("channel_index","<i4"),("feature_peak","<i8"),("amplitude","<f8"),("availability_sample","<i8")])
 
-def sha256(path):
- h=hashlib.sha256()
- with Path(path).open("rb") as f:
-  for b in iter(lambda:f.read(1<<20),b""): h.update(b)
- return h.hexdigest()
+def load_config(path=None):
+    """Load the wheel-contained frozen replay configuration."""
+    source=Path(path) if path else Path(__file__).with_name("config.json")
+    return json.loads(source.read_text())
 
 def _need(root, relative):
  p=root/relative
@@ -75,8 +74,6 @@ def public_labels(archive, stop):
  keep=times<stop
  return times[keep],mapping[units[keep]]
 
-# Exact archived range-selection helpers; imported after the public loader so the
-# CLI has no dependency on the historical workspace.
 def canonical_geometry_sets(g):
     d=np.linalg.norm(g[:,None]-g[None,:],axis=2); ix=np.arange(len(g))
     near=[np.flatnonzero((d[i]<=40.)&(ix!=i)).astype(np.int32) for i in ix]
@@ -87,30 +84,17 @@ def canonical_geometry_sets(g):
         return a,n
     ni,nc=pad(near);ri,rc=pad(ring);return ni,nc,ri,rc,d<=40.
 
-def canonical_detect(q, e, delta, offsets, h, g, lo, hi):
-    from . import _kernels as k
-    ni,nc,ri,rc,near=canonical_geometry_sets(g); x=k.spatial_input(q,delta,offsets,4524.30029296875/31.)
-    low=.75*h; pp,cc=k.peak_indices_range(e,low,6,10,12,10,0,lo,hi)
-    pool=k.extrema_range(x,e,pp,cc,ni,nc,ri,rc,6,10,6,0,k.descriptor_dtype(ni.shape[1]))
-    scale=delta/(4524.30029296875/31.)
-    strong,weak=k.masks(pool,h,scale,ni,nc,.75,2,2.,0,2.,2.,3.,1.,0)
-    eligible=np.flatnonzero(strong|weak); competing=pool[eligible]
-    sk,wk=k.nms_sorted(competing,strong[eligible],weak[eligible],near,6)
-    events=k.events_from(competing,sk,wk,dict(b=6,a=10,right=10,coh=6),dict(nms=6))
-    guard=(events['sample_index']>=lo)&(events['sample_index']+60<hi)
-    return events[guard],dict(pool_candidates=int(len(pool)),strong=int(sk.sum()),weak=int(wk.sum()))
-
 def canonical_score(events,times,channels,g,lo,hi):
     from ._matching import prepare_gt_index,spatial_pairs_fast
-    events=events[(events['sample_index']>=lo)&(events['sample_index']+60<hi)]; keep=(times>=lo)&(times<hi); idx=prepare_gt_index(times[keep],channels[keep],g,40.); pairs=spatial_pairs_fast(events['sample_index'],events['channel_index'],idx,30);tp=len(pairs);fp=len(events)-tp;fn=int(keep.sum())-tp
+    events=events[(events['sample_index']>=lo)&(events['sample_index']+60<hi)]; keep=(times>=lo)&(times<hi); idx=prepare_gt_index(times[keep],channels[keep],g,54.); pairs=spatial_pairs_fast(events['sample_index'],events['channel_index'],idx,30);tp=len(pairs);fp=len(events)-tp;fn=int(keep.sum())-tp
     return {'TP':int(tp),'FP':int(fp),'FN':int(fn),'detections':int(len(events)),'labels':int(keep.sum()),'A':tp/(tp+fp+fn),'precision':tp/len(events) if len(events) else 0.,'recall':tp/int(keep.sum()),'F1':2*tp/(2*tp+fp+fn),'FP_per_s':fp/((hi-lo)/FS)}
 
 def _sorted_pool(pool):
     return pool[np.lexsort((pool['ch'],pool['p'],pool['t']))]
 
-def _threshold(e_cal):
+def _threshold(e_cal, k_mad):
     med=np.median(e_cal,axis=0); mad=np.median(np.abs(e_cal-med),axis=0)
-    return np.maximum(1.,med+12.9*np.maximum(mad,.125)),{'med':med,'mad':mad}
+    return np.maximum(1.,med+float(k_mad)*np.maximum(mad,.125)),{'med':med,'mad':mad}
 
 def _extract_part(x,e,low,origin,start,stop,sets):
     from . import _kernels as k
@@ -122,11 +106,11 @@ def _pool_stream(factory, stop, cfg, h, sets):
     """One sequential pass; only fixed-K eligible descriptors are retained."""
     from . import _kernels as k
     state=cfg['initial'].copy();pq=cfg['initial'].copy();pe=np.zeros(len(cfg['initial']))
-    pending=tail_x=tail_e=None;parts=[];raw_count=kept_count=0; ni,nc,_,_,_=sets; scale=cfg['delta']/(4524.30029296875/31.)
+    pending=tail_x=tail_e=None;parts=[];raw_count=kept_count=0; ni,nc,_,_,_=sets; scale=cfg['delta']/(REFERENCE_FULL_SCALE/31.)
     for start,raw in factory.chunks(stop):
         q,state,_=k.encode_range(raw,cfg['delta'],cfg['offset_codes'],state)
         e,pq,pe=k.feature_range(q,cfg['offset_codes'],.875,pq,pe)
-        x=k.spatial_input(q,cfg['delta'],cfg['offset_codes'],4524.30029296875/31.)
+        x=k.spatial_input(q,cfg['delta'],cfg['offset_codes'],REFERENCE_FULL_SCALE/31.)
         if pending is not None:
             lo,px,pe0=pending; tx=tail_x if tail_x is not None else px[:0];te=tail_e if tail_e is not None else pe0[:0]
             xx=np.concatenate((tx,px,x[:80])); ee=np.concatenate((te,pe0,e[:80])); origin=lo-len(tx)
@@ -151,30 +135,38 @@ def _events(pool,h,sets,scale,neighbor=True):
     ix=np.flatnonzero(strong|weak); comp=pool[ix];sk,wk=k.nms_sorted(comp,strong[ix],weak[ix],near,6)
     return k.events_from(comp,sk,wk,dict(b=6,a=10,right=10,coh=6),dict(nms=6)),dict(eligible=int(len(ix)),strong=int(sk.sum()),weak=int(wk.sum()))
 
-def run_full(data_dir, output):
+def run_full(data_dir, output, config_path=None, stop_s=None):
+    config=load_config(config_path)
+    protocol=config['protocol']; main=config['methods']['LC6_ShiftASO']
+    cal_stop=int(protocol['CAL_s'][1]*FS); dev_stop=int(protocol['DEV_s'][1]*FS); stop=int((stop_s if stop_s is not None else protocol['TEST_s'][1])*FS)
+    if stop < cal_stop: raise ValueError("--stop-s must include CAL")
     paths=dataset_paths(data_dir);out=Path(output);out.mkdir(parents=True,exist_ok=False);header=zip_text(paths['zip'],'sim.imec0.ap.ch');active,g=geometry(zip_text(paths['zip'],'sim.imec0.ap.meta'))
     class Factory:
         def chunks(self,stop): return stream_cbin(paths['zip'],header,active,stop)
-    factory=Factory();cal=np.empty((CAL,len(active)),np.int16)
-    for start,x in factory.chunks(CAL):cal[start:start+len(x)]=x.astype(np.int16)
-    full=4524.30029296875
+    factory=Factory();cal=np.empty((cal_stop,len(active)),np.int16)
+    for start,x in factory.chunks(cal_stop):cal[start:start+len(x)]=x.astype(np.int16)
+    full=float(main['full_scale'])
     from . import _kernels as k
-    cfg=k.ranges_from_cal(cal.min(0),cal.max(0),active,full,'bank8_power2',1.25);qcal,_,_=k.encode_range(cal,cfg['delta'],cfg['offset_codes'],cfg['initial']);ecal,_,_=k.feature_range(qcal,cfg['offset_codes'],.875,cfg['initial'].copy(),np.zeros(len(active)));h,stats=_threshold(ecal);del qcal,ecal
-    sets=canonical_geometry_sets(g);scale=cfg['delta']/(full/31.);pool,diag=_pool_stream(factory,STOP,cfg,h,sets)
-    times,channels=public_labels(paths['zip'],STOP) if paths['labels'] is None else load_labels(paths['labels'],active,g)
-    on,ond=_events(pool,h,sets,scale,True);off,offd=_events(pool,h,sets,scale,False);onm=canonical_score(on,times,channels,g,DEV,STOP);offm=canonical_score(off,times,channels,g,DEV,STOP)
-    on=on[(on['sample_index']>=DEV)&(on['sample_index']+60<STOP)];off=off[(off['sample_index']>=DEV)&(off['sample_index']+60<STOP)]
+    cfg=k.ranges_from_cal(cal.min(0),cal.max(0),active,full,'global',1.0);qcal,_,_=k.encode_range(cal,cfg['delta'],cfg['offset_codes'],cfg['initial']);ecal,_,_=k.feature_range(qcal,cfg['offset_codes'],float(main['rho']),cfg['initial'].copy(),np.zeros(len(active)));h,stats=_threshold(ecal,main['K_mad']);del qcal,ecal
+    sets=canonical_geometry_sets(g);scale=cfg['delta']/(REFERENCE_FULL_SCALE/31.);pool,diag=_pool_stream(factory,stop,cfg,h,sets)
+    times,channels=public_labels(paths['zip'],stop) if paths['labels'] is None else load_labels(paths['labels'],active,g)
+    on,ond=_events(pool,h,sets,scale,True);onm=canonical_score(on,times,channels,g,dev_stop,stop)
+    lc_diagnostics={f'{lo}_{hi}':canonical_score(on,times,channels,g,lo*FS,min(hi*FS,stop)) for lo,hi in ((0,20),(20,60),(60,300)) if lo*FS < stop}
+    on=on[(on['sample_index']>=dev_stop)&(on['sample_index']+60<stop)]
     del pool
-    np.savez_compressed(out/'lc6_bank8_neighbor_events.npz',events=on);np.savez_compressed(out/'lc6_bank8_no_neighbor_events.npz',events=off);np.savez_compressed(out/'calibration.npz',H=h,med=stats['med'],mad=stats['mad'],delta=cfg['delta'])
-    from ._baselines import run_baselines
-    from ._full_aso import run_full_aso
-    base=run_baselines(factory,cal,g,full,STOP);full_aso=run_full_aso(factory,cal,g,full,STOP)
-    comparisons={'LC6_bank8_shiftASO':onm,'LC6_bank8_shiftASO_no_neighbor':offm}
-    for name,events in {**base['events'],**full_aso['events']}.items():
-        metric=canonical_score(events,times,channels,g,DEV,STOP); comparisons[name]=metric;np.savez_compressed(out/(name+'_events.npz'),events=events)
-    result={'status':'COMPLETE','protocol':{'CAL':[0,10],'DEV':[10,20],'TEST':[20,300],'guard':60,'time_tolerance':30,'spatial_um':40},'frozen_config':FROZEN,'input':{'zip_sha256':'not_computed; public Figshare file id 44729857','full_scale':full,'channels':len(active)},'pool':diag,'neighbor':{**onm,**ond,'event_sha256':hashlib.sha256((out/'lc6_bank8_neighbor_events.npz').read_bytes()).hexdigest()},'no_neighbor':{**offm,**offd,'event_sha256':hashlib.sha256((out/'lc6_bank8_no_neighbor_events.npz').read_bytes()).hexdigest()},'comparisons':comparisons,'baseline_parameters':base['parameters'],'fullprecision_aso_protocol':full_aso['protocol']}
+    np.savez_compressed(out/'lc6_shiftaso_events.npz',events=on);np.savez_compressed(out/'calibration.npz',H=h,med=stats['med'],mad=stats['mad'],delta=cfg['delta'])
+    from .neuro_baselines import controls_stream
+    neo_config=config['methods']['NEO10_EMA']
+    control_events, control_stats=controls_stream(factory,stop,g,float(config['methods']['SI10_MAD']['full_scale']),cal,rho=neo_config['rho'],c=neo_config['C'],temp_dir=out)
+    control_metrics={}; diagnostics={}
+    for name,events in control_events.items():
+        np.savez_compressed(out/(name.lower()+"_events.npz"),events=events)
+        control_metrics[name]=canonical_score(events,times,channels,g,dev_stop,stop)
+        diagnostics[name]={f'{lo}_{hi}':canonical_score(events,times,channels,g,lo*FS,min(hi*FS,stop)) for lo,hi in ((0,20),(20,60),(60,300)) if lo*FS < stop}
+    diagnostics['LC6_ShiftASO']=lc_diagnostics
+    result={'protocol':protocol,'config':{'methods':config['methods']},'input':{'channels':len(active)},'pool':diag,'LC6_ShiftASO':{**onm,**ond,'event_sha256':hashlib.sha256((out/'lc6_shiftaso_events.npz').read_bytes()).hexdigest()},'controls':control_metrics,'diagnostics':diagnostics,'control_calibration':{'q10_center_sha256':hashlib.sha256(control_stats['center'].tobytes()).hexdigest()}}
     (out/'summary.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 
-def run(data_dir, output):
-    return run_full(data_dir, output)
+def run(data_dir, output, config_path=None, stop_s=None):
+    return run_full(data_dir, output, config_path, stop_s)

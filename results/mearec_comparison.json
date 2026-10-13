@@ -1,0 +1,6 @@
+{
+  "dataset": "MEArec static 300 s, 256 channels, 64 units",
+  "interval_s": [20, 300],
+  "methods": ["SI10_MAD", "NEO10_EMA", "LC6_Shift_ASO"],
+  "table": "mearec_comparison.csv"
+}

@@ -4,17 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "shift-aso"
-version = "0.1.0"
-description = "Fixed-parameter Shift-ASO reference replays"
+version = "0.2.0"
+description = "Shift-ASO software benchmarks for Quiroga, MEArec, and Neuropixels"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
 dependencies = [
-    "numpy>=1.26,<2",
-    "scipy>=1.13,<1.14",
+    "numpy==2.0.2",
+    "scipy==1.13.1",
     "numba>=0.60,<0.61",
     "spikeinterface==0.103.2",
+    "h5py>=3.8,<4",
 ]
+
+[project.optional-dependencies]
+data = ["MEArec==1.9.3", "neo>=0.12,<0.15", "quantities>=0.14,<0.17"]
+test = ["pytest>=7"]
 
 [tool.setuptools.packages.find]
 include = ["shift_aso*"]
@@ -23,3 +28,4 @@ include = ["shift_aso*"]
 "shift_aso.quiroga" = ["*.cpp"]
 
 "shift_aso.neuropixels" = ["*.json"]
+"shift_aso.mearec" = ["*.json"]

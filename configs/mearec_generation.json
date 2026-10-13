@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "software": {
+    "mearec_version": "1.9.3",
+    "python_packages": ["MEArec==1.9.3", "numpy", "h5py"]
+  },
+  "assets": {
+    "directory": "assets/mearec",
+    "templates_file": "templates.h5",
+    "templates_sha256": "53d608a9a7c729a674b55ea98a8cdc65075bc0fef432fc819898859f62f0b662",
+    "spiketrains_file": "spiketrains.npz",
+    "spiketrains_sha256": "09fb1d84b4cc0dcf164865fa345e7a81d7bc8fc4f3b0c7287375a7cced2f2c88",
+    "recording_info_file": "recording_params.json",
+    "recording_info_sha256": "8ced91fc5a16960ddb1a98d0359c8628d6e601fe6f30224dae61360b0e75431e",
+    "annotations_file": "spiketrain_annotations.json",
+    "annotations_sha256": "754e1c5de6f2910cedb47c31d2b4dab9277c578963d3ffa708597fe68f3b3b69"
+  },
+  "recording": {
+    "duration_s": 300.0,
+    "prefix_s": 60.0,
+    "fs_hz": 20000,
+    "channels": 256,
+    "probe": "16x16 square MEA, 36 um pitch, 8 um square contacts",
+    "units": 64,
+    "native_mearec_noise": {"mode": "uncorrelated", "rms_uv": 10.0},
+    "filter": {"kind": "Butterworth bandpass", "order": 3, "cutoff_hz": [300, 6000], "mode": "filtfilt"}
+  },
+  "generation": {
+    "seeds": {"templates": 20261007, "spiketrains": 20261007, "convolution": 20261007, "noise": 20261007},
+    "spiketrains": {"process": "poisson", "n_exc": 51, "n_inh": 13, "f_exc_hz": 8, "f_inh_hz": 15, "min_rate_hz": 0.5, "refractory_ms": 2.0},
+    "template_selection": {"min_amplitude_uv": 50, "max_amplitude_uv": 300, "minimum_distance_um": 25, "cut_out_ms": [2, 5], "upsample": 8},
+    "selected_template_jitters": 10,
+    "continuation": {"range_s": [60.0, 300.0], "generator": "MEArec SpikeTrainGenerator", "seed": 20261307, "process": "poisson", "refractory_ms": 2.0},
+    "spike_train_schedule": {"range_s": [0.0, 60.0], "policy": "published fixed spike trains"},
+    "external_augmentation": {
+      "base": "none",
+      "independent_gaussian_10uVrms": {"prefix_seed": 2026100801, "continuation_seed_sequence": [20261013, 300, 1]},
+      "common_mode_gaussian_10uVrms": {"prefix_seed": 2026100802, "continuation_seed_sequence": [20261013, 300, 2]},
+      "processing": "float64 normal draw, float32 cast, 3rd-order 300-6000 Hz sosfiltfilt, then segment-wise 10 uVrms normalization"
+    }
+  },
+  "reconstruction": {"kind": "MEArec 1.9.3 using the public complete template generator and fixed spike trains"},
+  "benchmark_recording_sha256": "646c1c4838133b5ffae8adcf3d67a653b2c9f295feb9652d973f12d174b5584f"
+}

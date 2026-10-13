@@ -1,0 +1,1026 @@
+[
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.659214982702824,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 29.85395202636719,
+    "soma_position": [
+      21.56673367901927,
+      186.58593080874533,
+      125.32719578746168
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 11.110906265859851,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 10.414478302001953,
+    "soma_position": [
+      44.827656717004935,
+      -91.15931614652663,
+      -257.09752277258764
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.780344801923517,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 9.019999694824218,
+    "soma_position": [
+      47.69688686920487,
+      -44.626089310062326,
+      -271.5906971444846
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.021073428626691,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 17.623820495605468,
+    "soma_position": [
+      10.063175057684562,
+      155.2429091617734,
+      -4.657702316165739
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.446372394173881,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 22.663288879394532,
+    "soma_position": [
+      28.61386356217483,
+      -183.97132573861128,
+      -123.90004354378371
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 5.674740755891891,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 10.326078033447265,
+    "soma_position": [
+      45.419882280519396,
+      220.44980586989368,
+      -267.58231754788477
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.165390962290346,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 16.281195068359374,
+    "soma_position": [
+      11.033645623502474,
+      208.36158908586805,
+      196.229694075476
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.20700531502506,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 6.9253173828125,
+    "soma_position": [
+      53.80711226695831,
+      -37.832120705850684,
+      176.11554631645276
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.909627172378477,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 17.525802612304688,
+    "soma_position": [
+      20.715783201588557,
+      294.1510310933073,
+      166.12323067490036
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.563348190476047,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 5.1854393005371096,
+    "soma_position": [
+      61.28954616583202,
+      -78.89927079358611,
+      -297.446893072659
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.496652809691712,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 17.774261474609375,
+    "soma_position": [
+      29.280409992173126,
+      -238.40207549897846,
+      251.79678286818307
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.890706555322755,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 9.700457000732422,
+    "soma_position": [
+      43.183079243367736,
+      -40.6840548888033,
+      272.31264843605027
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.591156326744253,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 14.087123107910156,
+    "soma_position": [
+      26.525347740337367,
+      -131.54979783388038,
+      293.3056519845858
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 6.794871938692544,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 20.278628540039062,
+    "soma_position": [
+      30.39966115960652,
+      -201.71691617356333,
+      91.01396001761395
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.047035166317697,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 5.892181777954102,
+    "soma_position": [
+      54.73200090471855,
+      -256.0717952039971,
+      -245.1396513993838
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 5.946771417440317,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 5.924652481079102,
+    "soma_position": [
+      12.479588208873913,
+      296.7477387499591,
+      -234.81201959106016
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.774755520798332,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 13.883656311035157,
+    "soma_position": [
+      31.473900541074592,
+      141.9088386312015,
+      56.851368964799406
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 6.179622118545981,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 5.516284561157226,
+    "soma_position": [
+      67.34844312931767,
+      -111.83086667819941,
+      251.35341518411303
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 4.532562486655296,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 7.680258178710938,
+    "soma_position": [
+      12.07609976140007,
+      207.41041968046738,
+      290.4574411485146
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.21281776933895,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 11.56175537109375,
+    "soma_position": [
+      17.634129919367613,
+      -120.8362320827201,
+      11.769593781052663
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.68919003637416,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 14.205145263671875,
+    "soma_position": [
+      39.63257159607325,
+      93.3746729770101,
+      235.23541599493512
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 12.325329915888364,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 5.4125316619873045,
+    "soma_position": [
+      25.618812656051134,
+      -69.37427078689288,
+      272.57425827067254
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.614664454545021,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 8.558296203613281,
+    "soma_position": [
+      47.23006914413444,
+      -54.36633792032751,
+      68.42196442353855
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.619449424746536,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 5.387284851074218,
+    "soma_position": [
+      68.70430084640978,
+      -186.8402007342303,
+      162.17738517937443
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.364945869216676,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 8.406661987304688,
+    "soma_position": [
+      47.3263964752018,
+      132.24752051492578,
+      -221.72684383654536
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.87950724157763,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 10.357232666015625,
+    "soma_position": [
+      47.90221097716552,
+      138.80356478972686,
+      80.18449904459249
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.14184266185938,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 16.789239501953126,
+    "soma_position": [
+      24.1420851162831,
+      -185.59725864095736,
+      299.16332355075645
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.1734028388968,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 9.63807373046875,
+    "soma_position": [
+      14.881042719760982,
+      76.70642365970218,
+      -78.55568358718062
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.840646975225012,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 9.56695327758789,
+    "soma_position": [
+      44.247717681597024,
+      290.9183597406877,
+      138.89883018064398
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 6.937044030828334,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 6.832762908935547,
+    "soma_position": [
+      25.419811300763328,
+      -228.56217725652934,
+      17.147661186408754
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 6.422127169376216,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 9.131602478027343,
+    "soma_position": [
+      42.403056990421895,
+      35.980626098985226,
+      71.18222548718853
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 5.313749891376995,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 5.653805160522461,
+    "soma_position": [
+      16.48804757554682,
+      39.0190179343698,
+      0.9546400872408185
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.100658302445396,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 17.134561157226564,
+    "soma_position": [
+      34.68589125702111,
+      -65.90212547437551,
+      31.19858089244616
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.407323841204443,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 5.692326354980469,
+    "soma_position": [
+      52.81159671115451,
+      -69.63665831450919,
+      -113.29715701428992
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.398947989275591,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 9.081867218017578,
+    "soma_position": [
+      44.52586534987534,
+      -90.53016095687713,
+      43.97515698810378
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 6.947750716349072,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 6.736930847167969,
+    "soma_position": [
+      22.31206159206762,
+      -5.574933712309644,
+      166.87730519135874
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.8463296545167,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 25.795501708984375,
+    "soma_position": [
+      27.916171563665692,
+      -21.3600929626852,
+      -111.8380055208635
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.2709984465996,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 13.514265441894532,
+    "soma_position": [
+      36.16654994827063,
+      28.45020620203036,
+      -280.99233220744986
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.007769317733178,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 5.584068679809571,
+    "soma_position": [
+      64.96414641048375,
+      -192.52519961202484,
+      257.3114941230914
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.04063067062456,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 15.823416137695313,
+    "soma_position": [
+      30.86786216060688,
+      -132.0644501687656,
+      -182.78655137200235
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.246964818671064,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 10.00381851196289,
+    "soma_position": [
+      34.56373818317972,
+      237.919992583232,
+      -182.56450548030244
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.445034050681237,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 7.782660675048828,
+    "soma_position": [
+      52.78478629479521,
+      35.51240747974259,
+      -164.24055619132636
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.074962888883398,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_UTPC_cADpyr232_1",
+    "snr": 13.423358154296874,
+    "soma_position": [
+      12.965437084275894,
+      132.9371906410662,
+      -77.6654335324564
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.877849875650345,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 19.060148620605467,
+    "soma_position": [
+      25.465066195438965,
+      98.23978683024075,
+      -211.05928563964514
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 6.340429447243089,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 5.150376892089843,
+    "soma_position": [
+      53.9653141996903,
+      299.61798929094107,
+      76.29363708696911
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 8.98517387317487,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 22.729022216796874,
+    "soma_position": [
+      19.98511936084367,
+      250.75858693037196,
+      29.84644567577726
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 7.141837228026382,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 20.983544921875,
+    "soma_position": [
+      26.051606773359442,
+      -31.150395730243474,
+      -168.5084177458284
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 10.563491621998663,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 28.408035278320312,
+    "soma_position": [
+      20.196853615694216,
+      197.6931399942224,
+      9.430803448957818
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 4.684267464559341,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC2_cADpyr232_1",
+    "snr": 16.908357238769533,
+    "soma_position": [
+      30.92963489430663,
+      -217.91893844101887,
+      184.7549377206172
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 9.67607039429201,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_TTPC1_cADpyr232_1",
+    "snr": 14.456004333496093,
+    "soma_position": [
+      32.257725454523964,
+      155.19460493666395,
+      291.69319958668314
+    ]
+  },
+  {
+    "bintype": "E",
+    "bursting": false,
+    "cell_type": "E",
+    "exp_decay": null,
+    "fr": 5.563449839375883,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_STPC_cADpyr232_1",
+    "snr": 5.11910400390625,
+    "soma_position": [
+      63.518459254567034,
+      -214.8187782681357,
+      109.27535423990292
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 20.69817355528682,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_DBC_bAC217_1",
+    "snr": 7.655728149414062,
+    "soma_position": [
+      35.57768501342946,
+      155.56451176081782,
+      -62.60400281455665
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 11.69224380670033,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_MC_bAC217_1",
+    "snr": 11.665782165527343,
+    "soma_position": [
+      16.478386357121344,
+      -187.53378596577403,
+      114.53044662070056
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 11.927397474215613,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_ChC_cACint209_1",
+    "snr": 6.83911361694336,
+    "soma_position": [
+      22.652884648427744,
+      68.14568904125031,
+      -37.21217994470322
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 13.362161630316763,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_LBC_bAC217_1",
+    "snr": 11.818331146240235,
+    "soma_position": [
+      14.01322214880382,
+      -40.457144598669004,
+      -280.8762938173256
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 9.117020790939684,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_DBC_bAC217_1",
+    "snr": 5.406415176391602,
+    "soma_position": [
+      44.74682959386548,
+      16.542391981084847,
+      209.6973342633226
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 15.447440635919722,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_DBC_bAC217_1",
+    "snr": 16.05347595214844,
+    "soma_position": [
+      12.857934914429084,
+      11.487879080190396,
+      -182.22593119068884
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 13.60828933038468,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_NBC_bAC217_1",
+    "snr": 8.235013580322265,
+    "soma_position": [
+      43.14910555957047,
+      -201.35254282057457,
+      -246.95395227840112
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 15.19865355161733,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_LBC_bAC217_1",
+    "snr": 7.671112823486328,
+    "soma_position": [
+      20.691166441082608,
+      209.93884145163702,
+      -110.84699544640938
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 10.318689664643253,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_MC_bAC217_1",
+    "snr": 8.935301971435546,
+    "soma_position": [
+      16.12446071420026,
+      -268.37967895648757,
+      219.26439534751728
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 16.905824178523048,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_BTC_bAC217_1",
+    "snr": 6.956432342529297,
+    "soma_position": [
+      10.632911045078723,
+      56.70606829594914,
+      287.95598114204915
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 11.361045246482679,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_SBC_bNAC219_1",
+    "snr": 6.6660209655761715,
+    "soma_position": [
+      18.37580421232086,
+      60.38621710558323,
+      17.851015162474596
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 13.520959430441712,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_LBC_bAC217_1",
+    "snr": 6.059363555908203,
+    "soma_position": [
+      34.06607159460033,
+      -226.1605872256513,
+      -127.03048254762805
+    ]
+  },
+  {
+    "bintype": "I",
+    "bursting": false,
+    "cell_type": "I",
+    "exp_decay": null,
+    "fr": 16.104025831873322,
+    "max_burst_duration": null,
+    "max_spikes_per_burst": null,
+    "mtype": "L5_MC_bAC217_1",
+    "snr": 7.904731750488281,
+    "soma_position": [
+      21.585416998931585,
+      89.93779846980368,
+      197.6488447776
+    ]
+  }
+]

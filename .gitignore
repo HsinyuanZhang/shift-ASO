@@ -7,6 +7,15 @@ venv/
 build/
 dist/
 *.egg-info/
+outputs/
+output/
+*.nbc
+*.nbi
+*.so
+*.dylib
+*.h5
+!assets/mearec/templates.h5
+*.zip
 
 # Downloaded recordings and generated replay output
 data/
