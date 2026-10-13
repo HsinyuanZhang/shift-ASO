@@ -1,0 +1,142 @@
+{
+  "status": "canonical_fixed_replays",
+  "dataset": {
+    "figshare_file_id": 44729857,
+    "filename": "sim_no_drift.zip"
+  },
+  "protocol": {
+    "CAL_s": [
+      0,
+      10
+    ],
+    "DEV_s": [
+      10,
+      20
+    ],
+    "TEST_s": [
+      20,
+      300
+    ],
+    "guard_samples": 60,
+    "time_tolerance_samples": 30,
+    "spatial_radius_um": 40
+  },
+  "reference_map_sha256": "f7823bf5c54c77efd03bccd27ed090680fd0018b31836ba3170027319046c7ac",
+  "rows": [
+    {
+      "method": "LC6_bank8_shiftASO",
+      "input_resolution": "LC6 bank8 power-of-two",
+      "neighbor": true,
+      "TP": 1328927,
+      "FP": 232267,
+      "FN": 638977,
+      "detections": 1561194,
+      "A": 0.6040107791621652,
+      "precision": 0.8512247677098426,
+      "recall": 0.6753007260516773,
+      "F1": 0.7531255861979463,
+      "FP_per_s": 829.525,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "LC6_bank8_shiftASO_no_neighbor",
+      "input_resolution": "LC6 bank8 power-of-two",
+      "neighbor": false,
+      "TP": 1289772,
+      "FP": 252311,
+      "FN": 678132,
+      "detections": 1542083,
+      "A": 0.5809221179029959,
+      "precision": 0.8363829962459868,
+      "recall": 0.6554039221425435,
+      "F1": 0.7349155424222369,
+      "FP_per_s": 901.1107142857143,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "rawSI_MAD",
+      "input_resolution": "original digitized",
+      "neighbor": "locally_exclusive",
+      "TP": 1202362,
+      "FP": 112255,
+      "FN": 765542,
+      "detections": 1314617,
+      "A": 0.5780144690862573,
+      "precision": 0.9146101107775116,
+      "recall": 0.6109861050132527,
+      "F1": 0.7325844983169948,
+      "FP_per_s": 400.9107142857143,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "LC6SI_global",
+      "input_resolution": "LC6 global",
+      "neighbor": "locally_exclusive",
+      "TP": 888431,
+      "FP": 84766,
+      "FN": 1079473,
+      "detections": 973197,
+      "A": 0.43281725752312844,
+      "precision": 0.9128994437919558,
+      "recall": 0.45146053872546626,
+      "F1": 0.6041485824526257,
+      "FP_per_s": 302.73571428571427,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "NEO_bare",
+      "input_resolution": "original digitized",
+      "neighbor": "locally_exclusive",
+      "TP": 1037700,
+      "FP": 166837,
+      "FN": 930204,
+      "detections": 1204537,
+      "A": 0.4861011242113212,
+      "precision": 0.8614928391572861,
+      "recall": 0.5273123079174594,
+      "F1": 0.6541965634664285,
+      "FP_per_s": 595.8464285714285,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    },
+    {
+      "method": "NEO_EMA",
+      "input_resolution": "original digitized",
+      "neighbor": "locally_exclusive",
+      "TP": 1137453,
+      "FP": 125132,
+      "FN": 830451,
+      "detections": 1262585,
+      "A": 0.5434464576815687,
+      "precision": 0.9008922171576567,
+      "recall": 0.5780022805990536,
+      "F1": 0.7041986522783393,
+      "FP_per_s": 446.9,
+      "guard_samples": 60,
+      "time_tolerance_samples": 30,
+      "spatial_radius_um": 40
+    }
+  ],
+  "validation": {
+    "shift_neighbor_event_sha256": "511c3d7bf388d1c33131798a634ccfb010ed91055f3d851000f1dc028dde3fd1",
+    "shift_neighbor_TPFPFN": [
+      1328927,
+      232267,
+      638977
+    ],
+    "shift_no_neighbor_TPFPFN": [
+      1289772,
+      252311,
+      678132
+    ]
+  }
+}

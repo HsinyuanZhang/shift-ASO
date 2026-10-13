@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Downloaded recordings and generated replay output
+data/
+downloads/
+results/*/
+!results/quiroga/
+!results/quiroga/*.csv
+!results/quiroga/*.json
+!results/neuropixels/
+!results/neuropixels/*.csv
+!results/neuropixels/*.json

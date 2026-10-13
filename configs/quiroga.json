@@ -1,0 +1,23 @@
+{
+  "calibration_s": [0.0, 6.0],
+  "development_s": [6.002, 18.0],
+  "test_s": [18.002, 59.998],
+  "fs_hz": 24000,
+  "peak_shift_samples": 23,
+  "peak_shift_ms": 0.9583333333333334,
+  "main_arm": "peakminus23_tol1_correctedmask1",
+  "matching_tolerance_ms": 1.0,
+  "overlap_mask_radius_ms": 1.0,
+  "matrix": {
+    "Shift_ASO_LC4": {"bits": 4, "k": 0.5, "rho": 0.875, "jmax": 8, "step_map": [1,2,2,4,4,8,8,8]},
+    "Shift_ASO_LC5": {"bits": 5, "k": 0.5, "rho": 0.875, "jmax": 8, "step_map": [1,2,2,4,4,8,8,8]},
+    "Shift_ASO_LC6": {"bits": 6, "k": 0.5, "rho": 0.875, "jmax": 8, "step_map": [1,2,2,4,4,8,8,8]},
+    "Ordinary_ASO_uniform4": {"bits": 4, "k": 0.75},
+    "Ordinary_ASO_uniform5": {"bits": 5, "k": 0.5},
+    "Ordinary_ASO_uniform6": {"bits": 6, "k": 0.5},
+    "Ordinary_ASO_full_precision": {"k": 0.5},
+    "Exact_product_ASO_LC6": {"bits": 6, "k": 0.5},
+    "raw_tc": {"kappa": 4.5}, "lc_tc": {"bits": 6, "kappa": 5.0},
+    "raw_neo": {"kappa": 20.0}, "lc_neo": {"bits": 6, "kappa": 20.0}
+  }
+}

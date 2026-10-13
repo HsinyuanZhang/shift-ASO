@@ -1,0 +1,13 @@
+{
+  "protocol": "frozen Quiroga 16-record comparison matrix",
+  "main_arm": "peakminus23_tol1_correctedmask1",
+  "records": 16,
+  "methods": 12,
+  "rows": 768,
+  "artifacts": {
+    "expected_aso_shift_per_record.csv": "8 ASO/Shift-ASO methods x 16 records x 4 timing arms",
+    "expected_tc_neo_per_record.csv": "4 TC/NEO methods x 16 records x 4 timing arms",
+    "expected_method_summary.csv": "frozen aggregate comparison",
+    "expected_worst_record_summary.csv": "frozen worst-record comparison"
+  }
+}

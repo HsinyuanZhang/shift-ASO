@@ -1,0 +1,54 @@
+{
+  "dataset": {
+    "zip_member": "sim.imec0.ap.cbin",
+    "metadata_members": [
+      "sim.imec0.ap.ch",
+      "sim.imec0.ap.meta"
+    ],
+    "ground_truth_member": "sim.imec0.ap_params.npz",
+    "public_labels": "sim.imec0.ap_params.npz provides st/cl; frozen unit_to_main_channel vector is vendored from documented public-CBIN extraction"
+  },
+  "protocol": {
+    "CAL_s": [
+      0,
+      10
+    ],
+    "DEV_s": [
+      10,
+      20
+    ],
+    "TEST_s": [
+      20,
+      300
+    ],
+    "guard_samples": 60,
+    "spatial_radius_um": 40,
+    "time_tolerance_samples": 30
+  },
+  "frozen_main": {
+    "K_mad": 12.9,
+    "rho": 0.875,
+    "range": "bank8_power2_margin1.25",
+    "LC_bits": 6,
+    "J": 8,
+    "ptp_rescue": false
+  },
+  "archived_canonical_result": {
+    "method": "lc6_bank8_shiftaso_neighbor",
+    "input_resolution": "LC6 bank8 power-of-two",
+    "neighbor": true,
+    "A": 0.6040107791621652,
+    "precision": 0.8512247677098426,
+    "recall": 0.6753007260516773,
+    "F1": 0.7531255861979463,
+    "TP": 1328927,
+    "FP": 232267,
+    "FN": 638977,
+    "detections": 1561194,
+    "labels": 1967904,
+    "FP_per_s": 829.525,
+    "provenance": "accepted NP bank8_power2_m125 archived result",
+    "source_sha256": "671b19b84042662dc01f622c6b4cb67f3df926ed31b3b9357b05dbc52d6615b1",
+    "comparability": "canonical TEST20-300, guard60, spatial40um, time30 samples"
+  }
+}
