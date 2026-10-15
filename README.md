@@ -44,7 +44,10 @@ Accuracy is `A = TP / (TP + FP + FN)`. Multichannel scores use one-to-one
 matching within ±1 ms and 54 µm, including overlapping ground-truth spikes.
 Neuropixels reference channels are estimates from labeled waveforms used only
 for scoring. Detection uses a 40 µm neighborhood on Neuropixels and 54 µm on
-MEArec.
+MEArec. A Neuropixels detection matches simulator time `st` and the estimated
+main channel of unit `cl`. It does not match unit identity or waveform shape.
+Unmatched detections can still sit on a labeled spike that already has a pair.
+See [Neuropixels labels](docs/neuropixels_labels.md).
 
 | Method | MEArec base A (%) | MEArec independent noise A (%) | MEArec common noise A (%) | Neuropixels A (%) |
 |---|---:|---:|---:|---:|

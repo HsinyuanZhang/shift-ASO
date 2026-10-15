@@ -19,6 +19,13 @@ DEV is 6--20 s, and TEST is 20--300 s. The reported intervals are 0--20,
 the frozen estimated unit-to-main-channel map, 54 um, plus/minus 1 ms (30
 samples), and a 60-sample right guard. The map is an estimated scoring map only.
 
+Spike times are `st` in `sim.imec0.ap_params.npz`. The paired channel is the
+estimated main channel of unit `cl`, not a simulator electrode. One label
+credits one detection. A second detection of the same spike inside that window
+is a false positive. The label contract, the original functions, and the
+no-drift DEV split of unmatched detections are in
+[Neuropixels labels](neuropixels_labels.md).
+
 `LC6_ShiftASO` uses one uniform symmetric six-bit range, full scale
 2827.6876831054688, rho 0.875, K=12, J=8, and the step map
 1/2/2/4/4/8/8/8 only in feature formation. ADC state updates remain limited by
