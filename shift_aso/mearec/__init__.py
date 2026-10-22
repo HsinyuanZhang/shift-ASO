@@ -1,4 +1,4 @@
-"""Public MEArec replay and dataset preparation (lazy legacy API)."""
+"""MEArec data preparation and software methods; evaluate is the legacy HDF5 API."""
 
 __all__ = ["evaluate"]
 

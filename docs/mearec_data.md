@@ -140,7 +140,8 @@ inspect them and choose a new output/scratch root for an explicit retry.
 ## Legacy separation
 
 `scripts/generate_mearec.py`, `configs/mearec_generation.json`, and the legacy
-HDF5 replay describe an earlier input recipe, not the D0–D4 preparation method.
-The generation package does not encode Q, detect events, select thresholds, or
-publish observed benchmark outcomes. Generated event arrays and scores belong
-in external local output directories and must not be committed.
+HDF5 replay describe the original input recipe, not the D0–D4 preparation
+method. The generation package does not encode Q, detect events, or select
+thresholds. The separate [current software package](mearec.md) operates on
+supplied FP/frozen LC6 arrays. No observed experiment records, event arrays,
+logs, or scores are stored in this repository.
