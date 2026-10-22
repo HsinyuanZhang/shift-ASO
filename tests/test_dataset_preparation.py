@@ -33,13 +33,16 @@ def rewrite_manifest(root, change):
     core.ledger_update(root, path.name, core.sha256_file(path))
 
 
-def test_readme_is_dataset_only_with_upstream_citations():
+def test_readme_has_upstream_citations_and_separate_software_workflow():
     text = (ROOT / "README.md").read_text()
     for required in ("10.1007/s12021-020-09467-7", "10.1038/s41592-024-02232-7",
                      "sim_no_drift.zip", "sim_med_drift.zip", "5 µVrms", "D0–D4"):
         assert required in text
-    for forbidden in ("j_hat", "LC6", "Shift-ASO with", "TP + FP", "## Evaluation",
-                      "## Legacy", "results/", "python -m shift_aso.quiroga --"):
+    assert "python -m shift_aso.mearec dev" in text
+    assert "python -m shift_aso.mearec test" in text
+    assert "No benchmark scores" in text
+    for forbidden in ("results/", "mearec_comparison", "neuropixels_comparison",
+                      "expected_method_summary", "| Method | MEArec"):
         assert forbidden not in text
     assert "--metadata-only" in text and "--execute" in text
 

@@ -1,7 +1,8 @@
 # shift-ASO
 
-Dataset resources and preparation instructions for Quiroga recordings,
-MEArec simulations, and the Kilosort4 Neuropixels simulation datasets.
+Dataset resources for Quiroga, MEArec and Kilosort4 simulations, plus portable
+MEArec plain-NEO/EMA software methods. No benchmark scores or experiment
+records are stored in this repository.
 
 ## Datasets
 
@@ -157,6 +158,26 @@ production waveform identity. Source/input hashes, seeds, versions, and
 construction settings are recorded during explicit execution; CPU/BLAS
 variation can change noise realizations. Existing unknown files and failed
 partials are preserved rather than silently overwritten or resumed.
+
+## MEArec software methods
+
+The current plain NEO and post-NEO EMA methods are separate from data
+construction. Both accept caller-supplied FP or frozen LC6 arrays, use the
+same spatial peak-exclusion and matching rules, and keep sample-zero state
+across chunks and splits.
+
+```bash
+# Select on DEV for every manifest case, then freeze all choices.
+python -m shift_aso.mearec dev --manifest inputs.json --output ../runs/dev
+# Exact DEV replay, then frozen TEST; no reselection.
+python -m shift_aso.mearec test --dev-run ../runs/dev --output ../runs/test
+```
+
+See [input formats, method definitions and module layout](docs/mearec.md).
+The small search uses lags 1/2/4/6/8 and three nonzero EMA coefficients.
+Generated local choices, events and scores must not be committed. The older
+HDF5 methods are explicitly accessed with `python -m shift_aso.mearec legacy`;
+they are not silently substituted for the current implementation.
 
 ## References
 

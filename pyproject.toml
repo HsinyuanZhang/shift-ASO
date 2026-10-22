@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "shift-aso"
-version = "0.2.0"
-description = "Shift-ASO software benchmarks for Quiroga, MEArec, and Neuropixels"
+version = "0.3.0"
+description = "Dataset preparation and reproducible MEArec software spike detection"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
@@ -21,9 +21,12 @@ dependencies = [
 data = ["MEArec==1.9.3", "neo>=0.12,<0.15", "quantities>=0.14,<0.17"]
 test = ["pytest>=7"]
 
+[tool.setuptools]
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+
 [tool.setuptools.packages.find]
 include = ["shift_aso*"]
-exclude = ["shift_aso.neuropixels.datasets.tests*"]
+exclude = ["shift_aso.neuropixels.datasets.tests*", "shift_aso.mearec.software.tests*"]
 
 [tool.setuptools.package-data]
 "shift_aso.quiroga" = ["*.cpp"]
@@ -33,3 +36,4 @@ exclude = ["shift_aso.neuropixels.datasets.tests*"]
 "shift_aso" = ["datasets_registry.json"]
 "shift_aso.mearec.generation" = ["config.json", "README.md"]
 "shift_aso.neuropixels.datasets" = ["README.md"]
+"shift_aso.mearec.software" = ["README.md"]
