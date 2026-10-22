@@ -1,0 +1,68 @@
+{
+  "mearec": {
+    "config": "mearec/generation/config.json",
+    "datasets": [
+      "D0",
+      "D1",
+      "D2",
+      "D3",
+      "D4"
+    ],
+    "independent_floor_uVrms": 5.0,
+    "target_CAL_SNR_dB": [
+      10,
+      15,
+      20
+    ]
+  },
+  "neuropixels": {
+    "active_channels": 383,
+    "article_api": "https://api.figshare.com/v2/articles/25298815",
+    "article_id": 25298815,
+    "background_unit_ids": [
+      600,
+      1199
+    ],
+    "cases": {
+      "meddrift": {
+        "archive": "sim_med_drift.zip",
+        "bytes": 44873416729,
+        "computed_md5": null,
+        "file_id": 44729869,
+        "reference_kind": "gt_template_10s_blocks",
+        "reference_local_channels": 13,
+        "reference_max_snippets_per_parity": 16,
+        "reference_min_snippets": 4,
+        "reference_window_samples": [
+          -50,
+          70
+        ]
+      },
+      "nodrift": {
+        "archive": "sim_no_drift.zip",
+        "bytes": 43246418580,
+        "computed_md5": "c90bed07267f70c5a3142678e2ed4b4a",
+        "file_id": 44729857,
+        "reference_kind": "frozen_unit_map"
+      }
+    },
+    "duration_definition": "Benchmark uses the first 300 seconds; upstream recording may be longer.",
+    "duration_s": 300,
+    "fs": 30000,
+    "good_unit_ids": [
+      0,
+      599
+    ]
+  },
+  "quiroga": {
+    "fields": [
+      "data",
+      "spike_times",
+      "spike_class",
+      "samplingInterval"
+    ],
+    "native_records": 16,
+    "source": "Wave_clus"
+  },
+  "schema": "shift_aso_dataset_registry_v1"
+}
